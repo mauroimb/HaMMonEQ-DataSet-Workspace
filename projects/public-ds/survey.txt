@@ -1,0 +1,310 @@
+#####################################################################################################  SEGMENTAZIONE
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: Concrete Crack Segmentation Dataset
+tipo_di_superficie: strutture in calcestruzzo (edifici)
+numero_di_foto: 458
+formato_delle_foto: alta risoluzione
+colore: RGB
+annotazioni: maschere di segmentazione binarie (alpha maps in bianco e nero)
+origine_dati:
+  - immagini acquisite in vari edifici presso la Middle East Technical University
+link_rilevanti:
+  homepage:
+    - descrizione: "Pagina del dataset su Dataset Ninja"
+      url: https://datasetninja.com/concrete-crack-segmentation-dataset
+  paper:
+    - bibtex: |
+        @dataset{özgenel_2019,
+          author       = {Çağlar Fırat Özgenel},
+          title        = {Concrete Crack Segmentation Dataset},
+          month        = apr,
+          year         = 2019,
+          publisher    = {Mendeley Data},
+          version      = {V1},
+          doi          = {10.17632/jwsn7tfbrp.1},
+          url          = {https://doi.org/10.17632/jwsn7tfbrp.1}
+        }
+  download:
+    - descrizione: "Link per il download del dataset"
+      url: https://data.mendeley.com/datasets/jwsn7tfbrp/1
+
+
+---------------------------------------------------------------------------
+
+ROBOFLOW datasets:
+
+  - nome: Crack
+    superficie: strutture in calcestruzzo
+    numero_di_foto: 1.551
+    formato_delle_foto: non specificato
+    homepage: https://universe.roboflow.com/university-bswxt/crack-bphdr
+
+
+  - nome: VetNut Dataset
+    superficie: pareti (non specificato)
+    numero_di_foto: 5.265
+    formato_delle_foto: 640x640 pixel
+    homepage: https://universe.roboflow.com/quynhuuw/vetnut/dataset/10
+
+  - nome: Crack
+    superficie: strutture in calcestruzzo
+    numero_di_foto: 3.182
+    formato_delle_foto: non specificato
+    homepage: https://universe.roboflow.com/apu-jimbr/crack-uuasm
+
+  - nome: Crack Segmentation
+    superficie: strutture in calcestruzzo
+    numero_di_foto: 907
+    formato_delle_foto: non specificato
+    homepage: https://universe.roboflow.com/crack-3fgpa/crack-segmentation-4c6rz
+
+
+
+
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: DeepCrack Dataset
+tipi_di_superficie: 
+  - pavimentazione stradale
+  - strutture in calcestruzzo (es. pareti)
+numero_di_foto: 537
+formato_delle_foto: 544x384 pixel
+colore: RGB
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @article{liu2019deepcrack,
+          title={DeepCrack: A Deep Hierarchical Feature Learning Architecture for Crack Segmentation},
+          author={Liu, Yahui and Yao, Jian e Lu, Xiaohu e Xie, Renping e Li, Li},
+          journal={Neurocomputing},
+          volume={338},
+          pages={139--153},
+          year={2019},
+          doi={10.1016/j.neucom.2019.01.036}
+        }
+  github:
+    - descrizione: "Codice sorgente e dataset per la segmentazione delle crepe"
+      url: https://github.com/yhlleo/DeepCrack
+
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: CrackForest Dataset (CFD)
+tipo_di_superficie: pavimentazione stradale urbana
+numero_di_foto: 118
+formato_delle_foto: 320x480 pixel
+colore: RGB
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @article{shi2016automatic,
+          title={Automatic road crack detection using random structured forests},
+          author={Shi, Yong and Cui, Limeng and Qi, Zhiquan and Meng, Fan and Chen, Zhensong},
+          journal={IEEE Transactions on Intelligent Transportation Systems},
+          volume={17},
+          number={12},
+          pages={3434--3445},
+          year={2016},
+          publisher={IEEE}
+        }
+  dataset:
+    - descrizione: "CrackForest Dataset su Papers with Code"
+      url: https://paperswithcode.com/dataset/cfd
+
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: CRACK500
+tipo_di_superficie: pavimentazione stradale
+numero_di_foto: 500
+formato_delle_foto: circa 2000x1500 pixel
+colore: RGB
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @inproceedings{zhang2016road,
+          title={Road crack detection using deep convolutional neural network},
+          author={Zhang, Lei and Yang, Fan and Zhang, Yimin Daniel and Zhu, Ying Julie},
+          booktitle={Image Processing (ICIP), 2016 IEEE International Conference on},
+          pages={3708--3712},
+          year={2016},
+          organization={IEEE}
+        }
+  github:
+    - descrizione: "Codice sorgente per la rilevazione di crepe su pavimentazioni"
+      url: https://github.com/fyangneil/pavement-crack-detection
+  cloud_storage:
+    - descrizione: "Dataset CRACK500 su Google Drive"
+      url: https://drive.google.com/drive/folders/0B6lUWTm9RNh2M1dyUkNMMmh2aTg
+    - descrizione: "Dataset CRACK500 su OneDrive"
+      url: https://1drv.ms/f/s!AjrQqldqI9pMhF1rHnVfRj0a9k7Y
+    - descrizione: "Dataset CRACK500 su Baidu Yunpan (codice di estrazione: jviq)"
+      url: https://pan.baidu.com/s/1jI7DKZL
+
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: GAPs384
+tipo_di_superficie: pavimentazione stradale
+numero_di_foto: 384
+formato_delle_foto: 1920x1080 pixel
+colore: scala di grigi
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @inproceedings{eisenbach2017how,
+          title={How to Get Pavement Distress Detection Ready for Deep Learning? A Systematic Approach.},
+          author={Eisenbach, Markus and Stricker, Ronny and Seichter, Daniel and Amende, Karl and Debes, Klaus
+                  and Sesselmann, Maximilian and Ebersbach, Dirk and Stoeckert, Ulrike
+                  and Gross, Horst-Michael},
+          booktitle={International Joint Conference on Neural Networks (IJCNN)},
+          pages={2039--2047},
+          year={2017}
+        }
+  github:
+    - descrizione: "Codice sorgente per la rilevazione di crepe su pavimentazioni"
+      url: https://github.com/fyangneil/pavement-crack-detection
+  dataset:
+    - descrizione: "German Asphalt Pavement Distress Dataset - GAPs"
+      url: https://www.tu-ilmenau.de/en/university/departments/department-of-computer-science-and-automation/profile/institutes-and-groups/institute-of-computer-and-systems-engineering/group-for-neuroinformatics-and-cognitive-robotics/data-sets-code/german-asphalt-pavement-distress-dataset-gaps
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: CrackTree200
+tipo_di_superficie: pavimentazione stradale
+numero_di_foto: 206
+formato_delle_foto: risoluzioni variabili
+colore: RGB
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @article{zou2012cracktree,
+          title={CrackTree: Automatic crack detection from pavement images},
+          author={Zou, Qin and Cao, Yu and Li, Qingquan and Mao, Qingzhou and Wang, Song},
+          journal={Pattern Recognition Letters},
+          volume={33},
+          number={3},
+          pages={227--238},
+          year={2012},
+          publisher={Elsevier}
+        }
+  dataset:
+    - descrizione: "CrackTree200 Dataset su Papers with Code"
+      url: https://paperswithcode.com/dataset/cracktree200
+
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: AEL
+tipo_di_superficie: pavimentazione stradale
+numero_di_foto: 269 (38 con segmentazione di riferimento, 30 con riferimento parziale, 201 senza riferimento)
+formato_delle_foto: non specificato (acquisite con cinque diversi sistemi)
+colore: non specificato
+origine_dati:
+  - immagini reali acquisite con il sistema Aigle-RN (Francia)
+  - immagini acquisite tramite il programma europeo TRIMM (sistemi Tempest, LCMS, LRIS, ESAR)
+  - una immagine sintetica con pattern di crepe artificiali
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @article{amhaz2016automatic,
+          title={Automatic Crack Detection on Two-Dimensional Pavement Images: An Algorithm Based on Minimal Path Selection},
+          author={Amhaz, Rabih and Chambon, Sylvie and Idier, Jérôme and Baltazart, Vincent},
+          journal={IEEE Transactions on Intelligent Transportation Systems},
+          volume={17},
+          number={10},
+          pages={2718--2729},
+          year={2016},
+          publisher={IEEE}
+        }
+  repository:
+    - descrizione: "Archivio open access dell'Università di Tolosa (OATAO)"
+      url: http://oatao.univ-toulouse.fr/
+  dataset:
+    - descrizione: "Le immagini provengono dal progetto europeo TRIMM"
+      url: http://www.irit.fr/~Sylvie.Chambon/Crack_Detection_Database.html
+
+
+---------------------------------------------------------------------------
+
+
+***************************************************************************************************** Dataset Derivati
+
+>https://github.com/alexdonchuk/cracks_segmentation_dataset 
+ [AEL, CrackForest]
+
+---------------------------------------------------------------------------
+nome_del_dataset: CrackSeg9k
+tipo_di_superficie: varie superfici (pareti, pavimentazioni, ceramica, ecc.)
+numero_di_foto: 9.255
+formato_delle_foto: 400x400 pixel
+colore: RGB
+annotazioni: maschere di segmentazione binarie
+tipo_di_task: segmentazione semantica
+origine_dati:
+  - combinazione di 10 sotto-dataset open source: Crack500, Deepcrack, Sdnet, Cracktree, Gaps, Volker, Rissbilder, Noncrack, Masonry e Ceramic
+link_rilevanti:
+  homepage:
+    - descrizione: "Pagina del dataset su Papers with Code"
+      url: https://paperswithcode.com/dataset/crackseg9k
+  paper:
+    - bibtex: |
+        @inproceedings{kulkarni2022crackseg9k,
+          title={CrackSeg9k: a collection and benchmark for crack segmentation datasets and frameworks},
+          author={Kulkarni, Shreyas and Singh, Shreyas and Balakrishnan, Dhananjay and Sharma, Siddharth and Devunuri, Saipraneeth and Korlapati, Sai Chowdeswara Rao},
+          booktitle={European Conference on Computer Vision},
+          pages={179--195},
+          year={2022},
+          organization={Springer}
+        }
+  download:
+    - descrizione: "Link per il download del dataset su Harvard Dataverse"
+      url: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/EGIEBY
+---------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+#####################################################################################################  CLASSIFICAZIONE
+
+---------------------------------------------------------------------------
+
+nome_del_dataset: CCNY Concrete Structure Spalling and Crack (CSSC) - Crepe
+tipo_di_superficie: strutture in calcestruzzo (pareti, colonne, soffitti)
+numero_di_foto: non specificato (sub-immagini disponibili)
+formato_delle_foto: non specificato
+colore: RGB
+tipo_di_task: classificazione (no segmentazione)
+annotazioni: etichette binarie (true/false) per la presenza di crepe
+origine_dati:
+  - immagini originali acquisite su strutture in calcestruzzo con crepe
+  - sub-immagini derivate dalle immagini originali per addestramento e test, etichettate binariamente (true/false)
+link_rilevanti:
+  paper:
+    - bibtex: |
+        @inproceedings{yang2017deepconcrete,
+          title={Deep Concrete Inspection Using Unmanned Aerial Vehicle Towards CSSC Database},
+          author={Yang, Liang and Li, Bing and Li, Wei and Liu, Zhaoming and Yang, Guoyong and Xiao, Jizhong},
+          booktitle={2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+          year={2017},
+          organization={IEEE}
+        }
+  github:
+    - descrizione: "Codice sorgente e dataset per la rilevazione di crepe in strutture in calcestruzzo"
+      url: https://github.com/CCNYRoboticsLab/concreteIn_inpection_VGGF
+  dataset:
+    - descrizione: "Sub-immagini di crepe per classificazione (Dropbox)"
+      url: https://www.dropbox.com/s/0x9b6g5g9jvok3g/CrackSubImage.zip?dl=0
+    - descrizione: "Richiesta immagini originali e annotate (email a Liang Yang, annotazioni non specificate)"
+      url: https://ericlyang.github.io/project/deepinspection/
+
+---------------------------------------------------------------------------
