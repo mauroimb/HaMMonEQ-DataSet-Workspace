@@ -1,0 +1,38 @@
+Datasets:
+
+- in kaggle_crack_seg... ci sono 12 datasets (già resized) 
+  usare quello di base e verificare se è il caso di aggiungerne altri
+    ---> le immagini vanno resized a 448x448
+
+
+Label Studio
+
+- il brush label ha una risoluzione vincolata a come l'immagine originale
+  viene importata nel canvas. Bisognerebbe gestire la cosa mettendo mani direttamente
+  nel codice! 
+  NO. 
+  Si possono usare immagini più piccole (per esempio, tagliando le immagini originali
+  e poi ricomponendole dopo la segmentazione), che vengono visualizzate con
+  un livello di ingrandimento rispetto al quale il brushLabel diventa 
+  sufficientemente sottile
+
+- meglio utilizzare il polygonLabel
+
+
+- congiuntamente agli altri due metodi, aggiungiamo due bounding boxes
+  1. wide: attorno alla regione di spazio in cui sono presenti crepe
+  2. narrow: attorno alla singola crepa
+
+- serviranno per ritagliare 
+
+
+files modificati in mauro_hammoniaca:
+- /datasets/kaggle_crack...
+- /datasets/test.ipynb
+- /tools/rgb_avg.ipynb
+
+
+
+
+formattazione json label studio:
+https://labelstud.io/guide/export#Label-Studio-JSON-format-of-annotated-tasks

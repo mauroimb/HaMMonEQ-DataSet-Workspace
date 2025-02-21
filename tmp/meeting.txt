@@ -1,0 +1,72 @@
+- aggiornamenti:
+	- dataset pubblici: 
+		- tanti (---> merge)
+		- corposi (diversi da 10k imgs)
+		- soprattutto crepe orizzontali, un po' di verticali
+	ho scritto un paio di notebook per interpretarli 
+	    ---> valuto 2-3 gg (larghi) per dataloader e data analisys (medie RGB)
+	        	(1 class ---> no class o istance count)
+	- label studio:
+		- installato con SamMobile
+		- piccoli problemi (RISOLUZIONE) ma da risolvere assolutamente 
+	- modelli:
+		- no survey (no tempo)
+		- tiramisù! (secondo me è perfetto per il task, complex shape but no context)
+			+ non ho trovato pesi pretrained
+
+- labelling:
+	- bounding box non servono per ora (noi usiamo le patches). Poi le organizza Vizzari.
+	- facciamo solo segmentazione di crepe 
+	  (sperando di non "spendere" tutte le ore di Egor)
+	- serviranno soprattutto per il TEST dell'algoritmo
+	
+	[ - bisogna dire ad Egor di non segmentare le stesse crepe
+	  ma selezionare immagini con crepe diverse  ]
+	
+	---> gli facciamo tagliare le immagini in modo da prendere una crepa per immagine? 
+	     (bisogna rifletterci)
+        ---> io farei segmentare anche le textures da Egor. Che ne dite?
+	  
+	
+	
+- TEXTURE
+	
+	- diversi modi di dividerlo in patches:
+	
+	       no overlap       <<<     overlap ridondante 
+		+ economico              + prestazioni
+					diversi overlap possibili 
+					diversi modi di gestire gli output per pixel
+						("OR" il più scarso, paragone tr mappe di confidenza meglio)
+	
+	- il tutto va parallelizzato e si deve sfruttare pytorch
+	  (ma possiamo fare un bel ciclo FOR per velocizzare lo sviluppo)
+	
+
+- domande:
+	- formato texture: 1 file o diversi file? 
+	- potrei avere degli esempi di texture finita per diversi modelli con crepe
+	  a DIVERSA RISOLUZIONE?
+	  (almeno palazzo maresa e municipio)
+	  	
+	
+	
+	
+TEMPI:
+ - 2-3gg per il dataloader
+ - 3-4 a ciclo di training (ma questo è da vedere una volta scritto il loader)
+ 
+	
+-----------------------------------------
+--------------------------------------------
+-----------------------------------------------
+
+
+meeting oggi:
+
+- [Eva] che dite, labelling direttamente delle textures, no?
+- dimensioni delle TILES: 512 è perfetto, MA: forse il formato è troppo piccolo 
+    affinchè ci entri tutta la crepa?
+    - crepa spezzata ---> peggior previsione
+- ragioniamo sulle dimensioni. Variabili: (dimensione imamgine, numero immagini)
+  la risoluzione "spaziale" delle immagini dipende da ambedue i parametri.

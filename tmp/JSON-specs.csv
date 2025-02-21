@@ -1,0 +1,6 @@
+Level,Properties
+[i],"annotations, cancelled_annotations, comment_authors, comment_count, created_at, data, drafts, file_upload, id, inner_id, last_comment_updated_at, meta, predictions, project, total_annotations, total_predictions, unresolved_comment_count, updated_at, updated_by"
+[i].annotations[i],"completed_by, created_at, draft_created_at, ground_truth, id, import_id, last_action, last_created_by, lead_time, parent_annotation, parent_prediction, prediction, project, result, result_count, task, unique_id, updated_at, updated_by, was_cancelled"
+[i].annotations[i].result[i],"from_name, id, image_rotation, origin, original_height, original_width, to_name, type, value"
+[i].annotations[i].result[i].value,"closed, points, polygonlabels"
+[i].data,image

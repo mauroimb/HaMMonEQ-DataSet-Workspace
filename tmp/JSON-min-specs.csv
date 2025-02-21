@@ -1,0 +1,4 @@
+Level,Properties
+[i],"annotation_id, annotator, bbox, crack, created_at, id, image, lead_time, updated_at"
+[i].crack[i],"closed, original_height, original_width, points, polygonlabels"
+[i].bbox[i],"height, original_height, original_width, rectanglelabels, rotation, width, x, y"
