@@ -93,11 +93,11 @@ class Project:
         if color: dirname += "-color"
         if (annotation_class): dirname += f"-{annotation_class}"
         if melt: dirname += '-melt'
-        
         output_dir = self.path / dirname
         os.makedirs(output_dir, exist_ok=True)
 
         for item in self.data:
+
             raw_image_name = Path(item.get('data', {}).get('image', f'image_{item["id"]}')).name
             image_name = raw_image_name.split('-')[1] if '-' in raw_image_name else raw_image_name
 
@@ -136,7 +136,7 @@ class Project:
         print("✅ Multiclass masks exported successfully!")
 
 
-    def superposition(self, mask_dirs, alpha=0.5):
+    def superposition(self, mask_dirs, orig_dir=False, alpha=0.5):
         """
         Overlays masks on the original images.
 
@@ -144,8 +144,19 @@ class Project:
             mask_dirs (list): List of subfolders containing the masks.
             alpha (float): Transparency level for the overlay (0.0 - completely transparent, 1.0 - fully opaque).
         """
-        img_dir = self.path / "img"
-        output_dir = self.path / "superposition"
+        
+        # Determina la directory delle immagini
+        dir_name = orig_dir if orig_dir else "img"
+
+        img_dir = self.path / dir_name
+
+        # Controlla se la directory esiste
+        if not img_dir.exists() or not img_dir.is_dir():
+            print(f"❌ Errore: La directory '{img_dir}' non esiste o non è valida.")
+            return
+        
+        output_dir_name = "sp_"+dir_name +"_"+ "_".join(mask_dirs)
+        output_dir = self.path / output_dir_name
         output_dir.mkdir(exist_ok=True)
 
         for image_file in img_dir.glob("*.*"):  # Supports all image formats
@@ -196,7 +207,7 @@ class Project:
         Args:
             border_thickness (int): Thickness of the rectangle border.
         """
-        output_dir = self.path / "rectangle_masks"
+        output_dir = self.path / "rectangle-masks"
         output_dir.mkdir(exist_ok=True)
 
         img_dir = self.path / "img"
@@ -238,7 +249,68 @@ class Project:
                                 (x + width + i, y + height + i)
                             ], outline=color)
 
-            output_path = output_dir / f"{image_name.split('.')[0]}_rectangles.png"
+            output_path = output_dir / f"{image_name.split('.')[0]}.png"
             original_image.save(output_path)
 
         print("✅ Rectangle masks exported successfully!")
+
+
+    def translation(self, image, x, y):
+        for item in self.data:
+            raw_image_name = Path(item.get('data', {}).get('image', f'image_{item["id"]}')).name
+            image_name = raw_image_name.split('-')[1] if '-' in raw_image_name else raw_image_name
+            if image_name != image:
+                continue
+
+            for annotation in item.get('annotations', []):
+                for result in annotation.get('result', []):
+                    if result['type'] == 'polygonlabels':
+                        for point in result['value']['points']:
+                            point[0] += (x * 100 / result.get('original_width'))
+                            point[1] += (y * 100 / result.get('original_height'))
+                    elif result['type'] == 'rectanglelabels':
+                        result['value']['x'] += (x * 100 / result.get('original_width'))
+                        result['value']['y'] += (y * 100 / result.get('original_height'))
+        
+        with open(self.json_file, 'w') as f:
+            json.dump(self.data, f, indent=4)
+        print(f'✅ Translated annotations for {image} by ({x},{y}) pixels.')
+    
+    def rotation(self, image, cx, cy, angle):
+        angle_rad = math.radians(angle)
+        cos_theta = math.cos(angle_rad)
+        sin_theta = math.sin(angle_rad)
+        
+        for item in self.data:
+            raw_image_name = Path(item.get('data', {}).get('image', f'image_{item["id"]}')).name
+            image_name = raw_image_name.split('-')[1] if '-' in raw_image_name else raw_image_name
+            if image_name != image:
+                continue
+            
+            for annotation in item.get('annotations', []):
+                for result in annotation.get('result', []):
+                    if result['type'] == 'polygonlabels':
+                        for point in result['value']['points']:
+                            x = point[0] * result.get('original_width') / 100 - cx
+                            y = point[1] * result.get('original_height') / 100 - cy
+                            new_x = x * cos_theta - y * sin_theta + cx
+                            new_y = x * sin_theta + y * cos_theta + cy
+                            point[0] = new_x * 100 / result.get('original_width')
+                            point[1] = new_y * 100 / result.get('original_height')
+                    elif result['type'] == 'rectanglelabels':
+                        x = result['value']['x'] * result.get('original_width') / 100 - cx
+                        y = result['value']['y'] * result.get('original_height') / 100 - cy
+                        new_x = x * cos_theta - y * sin_theta + cx
+                        new_y = x * sin_theta + y * cos_theta + cy
+                        result['value']['x'] = new_x * 100 / result.get('original_width')
+                        result['value']['y'] = new_y * 100 / result.get('original_height')
+        
+        with open(self.json_file, 'w') as f:
+            json.dump(self.data, f, indent=4)
+        print(f'✅ Rotated annotations for {image} by {angle} degrees around ({cx},{cy}).')
+
+
+    def list_images(self):
+        images = [Path(item.get('data', {}).get('image', f'image_{item["id"]}')).name for item in self.data]
+        print("🖼️ Project images:", images)
+        return images

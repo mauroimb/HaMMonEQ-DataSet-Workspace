@@ -1,0 +1,16 @@
+<View>
+    <!-- Interfaccia di caricamento immagine -->
+    <Image name="image" value="$image" zoom="true" zoomControl="true" zoomMin="1" zoomMax="10"/>
+
+    <!-- Etichetta per la segmentazione poligonale -->
+    <PolygonLabels name="crack" toName="image">
+        <Label value="crack" background="#FF0000"/>
+      <Label value="crack_orizz" background="#ff00d0"/>
+    </PolygonLabels>
+
+    <!-- Etichette per le bounding box -->
+    <RectangleLabels name="bbox" toName="image">
+        <Label value="narrow" background="#00FF00"/>
+        <Label value="wide" background="#0000FF"/>
+    </RectangleLabels>
+</View>
